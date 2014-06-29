@@ -1,0 +1,36 @@
+Node version: v0.10.15
+
+Cordova version: 0.21.3
+
+Config.xml file: 
+
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.lagado.phample" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Phample</name>
+    <description>
+        Phample is a thampful of a bampful.
+    </description>
+    <author email="jh@lagado.com" href="http://lagado.com">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+</widget>
+
+
+Plugins: 
+
+org.apache.cordova.camera
+
+Android platform:
+
+Available Android targets:
+----------
+id: 1 or "android-19"
+     Name: Android 4.4.2
+     Type: Platform
+     API level: 19
+     Revision: 3
+     Skins: HVGA, WSVGA, WVGA800 (default), WXGA800, WVGA854, WXGA800-7in, WQVGA400, WQVGA432, QVGA, WXGA720
+ Tag/ABIs : default/armeabi-v7a
+

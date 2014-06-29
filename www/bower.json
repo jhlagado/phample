@@ -1,0 +1,9 @@
+{
+  "name": "phample",
+  "version": "0.0.0",
+  "keywords": "seed, polymer, web-components",
+  "main": "phample.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.3.1"
+  }
+}
