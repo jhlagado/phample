@@ -1,0 +1,185 @@
+<link rel="import" href="../components/core-scaffold/core-scaffold.html">
+<link rel="import" href="../components/core-header-panel/core-header-panel.html">
+<link rel="import" href="../components/core-menu/core-menu.html">
+<link rel="import" href="../components/core-item/core-item.html">
+<link rel="import" href="../components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../components/core-field/core-field.html">
+<link rel="import" href="../components/core-icon/core-icon.html">
+<link rel="import" href="../components/core-input/core-input.html">
+<link rel="import" href="../components/core-icons/core-icons.html">
+<link rel="import" href="../components/speech-mic/speech-mic.html">
+<link rel="import" href="../components/core-menu/core-submenu.html">
+<link rel="import" href="../components/google-map/google-map.html">
+<link rel="import" href="../components/google-map/google-map-search.html">
+
+<!--
+Element providing map demo app.
+
+##### Example
+
+    <google-map-app></google-map-app>
+
+@element google-map-demo
+@blurb Element providing map demo app.
+@status alpha
+@homepage http://jhlagado.github.io/google-map-demo
+-->
+
+<polymer-element name="google-map-app">
+
+  <template>
+    <style>    
+      :host {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        top: 0px;
+        left: 0px;
+      }
+      #core_scaffold {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+      }
+      #core_header_panel {
+        background-color: rgb(255, 255, 255);
+      }
+      #core_toolbar {
+        color: rgb(255, 255, 255);
+        background-color: rgb(79, 125, 201);
+      }
+      #core_menu {
+        font-size: 16px;
+      }
+      #google_map {
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+      #core_field {
+        background-color: rgb(255, 255, 255);
+      }
+      #core_icon {
+        height: 24px;
+        width: 24px;
+      }
+    </style>
+    <core-scaffold id="core_scaffold">
+      <core-header-panel mode="seamed" id="core_header_panel" navigation flex>
+        <core-toolbar id="core_toolbar">
+          <core-field id="core_field" icon="search" theme="core-light-theme" center horizontal layout>
+            <core-icon icon="search" id="core_icon"></core-icon>
+            <core-input placeholder="text input" value="{{ $.speech_mic.transcript }}" id="core_input" flex></core-input>
+            <speech-mic id="speech_mic"></speech-mic>
+          </core-field>
+        </core-toolbar>
+        <core-menu selected="Roadmap" valueattr="label" selectedindex="0" id="core_menu" theme="core-light-theme">
+          <core-item label="Roadmap" icon="settings" id="core_item" on-tap="{{ showRoad }}" horizontal center layout active></core-item>
+          <core-item label="Satellite" icon="settings" id="core_item1" on-tap="{{ showSat }}" horizontal center layout></core-item>
+        </core-menu>
+      </core-header-panel>
+      <div id="div" tool>Google Map Demo</div>
+      <google-map latitude="{{ $.google_map_search.result.latitude }}" longitude="{{ $.google_map_search.result.longitude }}" zoom="18" id="google_map"></google-map>
+      <google-map-search map="{{ $.google_map.map }}" query="{{ $.core_input.value }}" id="google_map_search"></google-map-search>
+    </core-scaffold>
+  </template>
+
+  <script>
+
+    Polymer('google-map-app', {
+      /**
+       * The `aProp` is a property that does something cool.
+       *
+       * @property aProp
+       * @type bool
+       */
+      aProp: false,
+      /**
+       * The `task` method does no work at this time.
+       *
+       * @method task
+       * @return {Object} Returns undefined.
+       * @param {String} dummy Serves no purpose today.
+       */
+      showRoad: function () {
+      	this.$.google_map.mapType = 'roadmap';
+      },
+      /**
+       * The `task` method does no work at this time.
+       *
+       * @method task
+       * @return {Object} Returns undefined.
+       * @param {String} dummy Serves no purpose today.
+       */
+      showSat: function () {
+      	this.$.google_map.mapType = 'satellite';
+      }
+    });
+
+  </script>
+
+</polymer-element>
+
+<polymer-element name="google-map-demo" attributes="notitle">
+
+  <template>
+
+    <link rel="stylesheet" href="google-map-app.css" />
+
+    <content></content>
+
+  </template>
+
+  <script>
+
+    Polymer('google-map-demo', {
+      /**
+       * The `noevent` event is not actually fired from here,
+       * we document it as an example of documenting events.
+       *
+       * @event noevent
+       */
+
+      /**
+       * The `notitle` attribute does not yet have a purpose.
+       *
+       * @attribute notitle
+       * @type string
+       */
+      notitle: '',
+
+      /**
+       * The `aProp` is a property that does something cool.
+       *
+       * @property aProp
+       * @type bool
+       */
+      aProp: false,
+
+      ready: function() {
+      },
+
+      /**
+       * The `task` method does no work at this time.
+       *
+       * @method task
+       * @return {Object} Returns undefined.
+       * @param {String} dummy Serves no purpose today.
+       */
+      task: function(dummy) {
+      }
+
+    });
+
+  </script>
+
+</polymer-element>
